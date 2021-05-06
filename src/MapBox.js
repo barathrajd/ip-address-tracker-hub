@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import MapGL, { Marker, Popup } from 'react-map-gl';
 
 const MapBox = ({ latitude, longitude, city, country, viewport }) => {
