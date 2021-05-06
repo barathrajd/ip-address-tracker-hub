@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MapGL, { Marker, Popup } from 'react-map-gl';
+import mapboxgl from 'mapbox-gl';
+
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const MapBox = ({ latitude, longitude, city, country, viewport }) => {
   const [showPopup, setShowPopup] = useState(false);
