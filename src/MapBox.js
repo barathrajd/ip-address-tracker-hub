@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MapGL, { Marker, Popup } from 'react-map-gl';
-import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+// eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
