@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MapGL, { Marker, Popup } from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
 mapboxgl.workerClass = MapboxWorker;
@@ -15,9 +16,8 @@ const MapBox = ({ latitude, longitude, city, country, viewport }) => {
         setShowPopup(false);
       }
     };
-
     window.addEventListener('keydown', listener);
-  }, [change]);
+  }, [change, viewport]);
 
   return (
     <div className='map'>
