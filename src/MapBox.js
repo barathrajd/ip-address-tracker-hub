@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import MapGL, { Marker, Popup } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import React, { useState, useEffect } from "react";
+import ReactMapboxGl, { Marker, Popup } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from "mapbox-gl";
 
-mapboxgl.workerClass = MapboxWorker;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const MapBox = ({ latitude, longitude, city, country, viewport }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -13,20 +11,20 @@ const MapBox = ({ latitude, longitude, city, country, viewport }) => {
 
   useEffect(() => {
     const listener = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setShowPopup(false);
       }
     };
-    window.addEventListener('keydown', listener);
+    window.addEventListener("keydown", listener);
   }, [change, viewport]);
 
   return (
-    <div className='map'>
-      <MapGL
+    <div className="map">
+      <ReactMapboxGl
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={(e) => setChange(e)}
-        mapStyle='mapbox://styles/mapbox/streets-v11'
+        mapStyle="mapbox://styles/mapbox/streets-v11"
       >
         <Marker latitude={latitude} longitude={longitude}>
           <button
@@ -34,7 +32,7 @@ const MapBox = ({ latitude, longitude, city, country, viewport }) => {
               setShowPopup(true);
             }}
           >
-            <i className='fas fa-map-marker-alt'></i>
+            <i className="fas fa-map-marker-alt"></i>
           </button>
         </Marker>
         {showPopup ? (
@@ -48,8 +46,8 @@ const MapBox = ({ latitude, longitude, city, country, viewport }) => {
             {city && country && (
               <h1
                 style={{
-                  padding: '1rem',
-                  fontFamily: 'inherit',
+                  padding: "1rem",
+                  fontFamily: "inherit",
                 }}
               >
                 {city}, {country}
@@ -57,7 +55,7 @@ const MapBox = ({ latitude, longitude, city, country, viewport }) => {
             )}
           </Popup>
         ) : null}
-      </MapGL>
+      </ReactMapboxGl>
     </div>
   );
 };

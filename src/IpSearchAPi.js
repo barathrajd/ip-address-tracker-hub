@@ -1,63 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import MapBox from './MapBox';
+import React from "react";
+import MapBox from "./MapBox";
 
-const IpSearchAPi = ({ ipAddress, viewport }) => {
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
-  const [location, setLocation] = useState('');
-  const [timezone, setTimezone] = useState('');
-  const [isp, setIsp] = useState('');
-  const [ip, setIp] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(
-        `https://geo.ipify.org/api/v1?apiKey=${
-          process.env.REACT_APP_IP_SEARCH
-        }&ipAddress=${ipAddress ? ipAddress : '8.8.8.8'}`
-      );
-      const resData = await res.data;
-      if (res.code === 422) {
-        alert('Invalid Syntax');
-      }
-      setLatitude(resData.location.lat);
-      setLongitude(resData.location.lng);
-      setCity(resData.location.city);
-      setCountry(resData.location.country);
-      setLocation(resData.location.region);
-      setTimezone(resData.location.timezone);
-      setIsp(resData.isp);
-      setIp(resData.ip);
-    };
-
-    fetchData();
-  }, [ipAddress]);
-
+const IpSearchAPi = ({ viewport, options }) => {
+  const { latitude, longitude, city, country, location, timezone, isp, ip } =
+    options;
   return (
-    <div className='ipsearch'>
-      <div className='output'>
-        <div className='output__group'>
+    <div className="ipsearch">
+      <div className="output">
+        <div className="output__group">
           <p>ipaddress</p>
-          <div className='output__text'>{ip ? ip : '8.8.8.8'}</div>
+          <div className="output__text">{ip ? ip : "8.8.8.8"}</div>
         </div>
-        <div className='output__group'>
+        <div className="output__group">
           <p>location</p>
-          <div className='output__text'>
-            {location ? location : 'California'}
+          <div className="output__text">
+            {location ? location : "California"}
           </div>
         </div>
-        <div className='output__group'>
+        <div className="output__group">
           <p>timezone</p>
-          <div className='output__text'>
-            {timezone ? `UTC ${timezone}` : 'UTC-07:00'}
+          <div className="output__text">
+            {timezone ? `UTC ${timezone}` : "UTC-07:00"}
           </div>
         </div>
-        <div className='output__group'>
+        <div className="output__group">
           <p>isp</p>
-          <div className='output__text'>{isp ? isp : 'Google LLC'}</div>
+          <div className="output__text">{isp ? isp : "Google LLC"}</div>
         </div>
       </div>
       <MapBox
@@ -69,8 +37,8 @@ const IpSearchAPi = ({ ipAddress, viewport }) => {
           (viewport = {
             latitude: Number(latitude),
             longitude: Number(longitude),
-            width: '100%',
-            height: 788,
+            width: "100vw",
+            height: "100vh",
             zoom: 12,
           })
         }
