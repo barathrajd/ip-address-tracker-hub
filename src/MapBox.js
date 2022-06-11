@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapboxGl, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import mapboxgl from "!mapbox-gl";
+import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
