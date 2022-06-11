@@ -164,6 +164,7 @@ input[type="search"] {
   }
   .output__group {
     width: 20rem;
+    padding: 1rem;
   }
   .output__group:not(:last-child):before {
     display: none;
@@ -200,7 +201,7 @@ input[type="search"] {
   }
 
   .output__text {
-    font-size: 3rem;
+    font-size: 1rem;
   }
   .output__group p {
     text-transform: uppercase;
