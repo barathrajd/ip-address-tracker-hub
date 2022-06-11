@@ -159,11 +159,11 @@ input[type="search"] {
   .output {
     flex-direction: column;
     text-align: center;
-    top: -10rem;
+    /* top: -10rem; */
     padding: 2rem;
   }
   .output__group {
-    width: 20rem;
+    width: 15rem;
     padding: 1rem;
   }
   .output__group:not(:last-child):before {
