@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import rarrow from "./images/icon-arrow.svg";
 import IpSearchAPi from "./IpSearchAPi";
-import {} from "react-map-gl";
 import axios from "axios";
 
 const Search = () => {
