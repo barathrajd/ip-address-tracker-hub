@@ -163,7 +163,6 @@ input[type="search"] {
     padding: 2rem;
   }
   .output__group {
-    width: 15rem;
     padding: 1rem;
   }
   .output__group:not(:last-child):before {
